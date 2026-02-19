@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Simple Registration</title>
+   <style>
+      body { 
+         font-family: sans-serif; 
+         background-color: #71c7bb; 
+         display: flex; 
+         justify-content: center; 
+         padding-top: 50px;
+      }
+      .card {
+         background: white;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+         width: 300px;
+      }
+      input { 
+         width: 100%; 
+         margin-bottom: 15px; 
+         padding: 8px;
+         box-sizing: border-box; 
+      }
+      input[type="submit"] {
+         background-color: #6171cc; 
+         color: white;
+         border: none;
+         cursor: pointer;
+      }
+   </style>
+</head>
+<body>
+
+<div class="card">
+   <h2>Registration</h2>
+   <form onsubmit="return validate()">
+      Name:<br>
+      <input type="text" id="name"><br>
+
+      Age:<br>
+      <input type="number" id="age"><br>
+
+      Password:<br>
+      <input type="password" id="password"><br>
+
+      Confirm Password:<br>
+      <input type="password" id="cpassword"><br>
+
+      <input type="submit" value="Register">
+   </form>
+</div>
+
+<script>
+function validate() {
+   var name = document.getElementById("name").value;
+   var age = document.getElementById("age").value;
+   var password = document.getElementById("password").value;
+   var cpassword = document.getElementById("cpassword").value;
+
+   var letters = /^[A-Za-z\s]+$/;
+   if(name == "" || !name.match(letters)) {
+       alert("Invalid Name");
+       return false;
+   }
+   if(age == "") {
+       alert("Age is mandatory");
+       return false;
+   }
+   if(password == "" || password != cpassword) {
+       alert("Passwords do not match or empty");
+       return false;
+   }
+
+   alert("Registration Successful!");
+   return true;
+}
+</script>
+
+</body>
